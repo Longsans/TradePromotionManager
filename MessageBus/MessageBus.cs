@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace MessageBus
 {
-    public class MessageBus
+    public static class MessageBus
     {
-        public event Action<string>? MessageSent;
+        public static event Action<string>? MessageSent;
 
-        public void SendMessage(string message)
+        public static void SendMessage(Message msg)
         {
-            MessageSent?.Invoke(message);
+            Console.WriteLine($"Sending message");
+            MessageSent?.Invoke(msg.Encode());
         }
     }
 }
