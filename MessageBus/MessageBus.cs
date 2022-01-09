@@ -10,9 +10,10 @@ namespace MessageBus
     {
         public static event Action<string>? MessageSent;
 
-        public static void SendMessage(string message)
+        public static void SendMessage(Message msg)
         {
-            MessageSent?.Invoke(message);
+            Console.WriteLine($"Sending message");
+            MessageSent?.Invoke(msg.Encode());
         }
     }
 }
