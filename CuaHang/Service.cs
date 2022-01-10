@@ -38,12 +38,12 @@ namespace CuaHang
             switch (msg.FunctionCall)
             {
                 case nameof(TimCuaHang):
-                    TimCuaHang(msg.JsonParam);
+                    TimCuaHang(msg.Sender, msg.JsonParam);
                     break;
             }
         }
 
-        public static void TimCuaHang(string json)
+        public static void TimCuaHang(string sender, string json)
         {
             JObject jsonO = JObject.Parse(json);
             string? id = (string?)jsonO["ID"];
@@ -51,6 +51,9 @@ namespace CuaHang
                 return;
 
             PostToConsole($"Tim thay cua hang voi ID {id}");
+            var cuaHang = CuaHang.Models.CuaHang.Find(id);
+
+            SendMessage(sender, "", cuaHang.Encode());
         }
     }
 }

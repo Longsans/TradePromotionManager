@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,8 +42,23 @@ namespace HinhThucVaTieuChiKhuyenMai
             PostToConsole($"Recieve message from {msg.Sender}");
             switch (msg.FunctionCall)
             {
-
+                case nameof(TimHinhThuc):
+                    TimHinhThuc(msg.Sender, json);
+                    break;
             }
+        }
+
+        public static void TimHinhThuc(string sender, string json)
+        {
+            JObject jsonO = JObject.Parse(json);
+            string? ten = (string?)jsonO["HinhThuc"];
+            if (ten == null)
+                return;
+
+            PostToConsole($"Tim thay hinh thuc {ten}");
+            var hinhThuc = HinhThucVaTieuChiKhuyenMai.Models.HinhThuc.Find(ten).Encode();
+
+            SendMessage(sender, "", hinhThuc);
         }
     }
 }
