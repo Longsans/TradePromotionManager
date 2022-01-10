@@ -24,7 +24,7 @@ namespace CacKhuyenMaiDangChay
             }
         }
 
-        static public void Init()
+        public void Init()
         {
             Console.WriteLine("[Cac Khuyen Mai Dang Chay]");
             Console.WriteLine("Init");
@@ -32,7 +32,7 @@ namespace CacKhuyenMaiDangChay
             MessageBus.MessageBus.MessageSent += Recieve;
         }
 
-        static public void Send(string reciever, string func, string json)
+        public void Send(string reciever, string func, string json)
         {
             Console.WriteLine("[Cac Khuyen Mai Dang Chay]");
             Message message = new Message();
@@ -43,7 +43,7 @@ namespace CacKhuyenMaiDangChay
             MessageBus.MessageBus.SendMessage(message);
         }
 
-        static public void Recieve(string json)
+        public void Recieve(string json)
         {
             Console.WriteLine("[Cac Khuyen Mai Dang Chay]");
             Console.WriteLine(json);

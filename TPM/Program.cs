@@ -3,5 +3,5 @@ using LenKeHoachKhuyenMai;
 
 
 Console.WriteLine("[The Main Program]");
-ServiceCacKhuyenMaiDangChay.Init();
-ServiceLenKeHoachKhuyenMai.Init();
+ServiceCacKhuyenMaiDangChay.Instance.Init();
+ServiceLenKeHoachKhuyenMai.Instance.Init();

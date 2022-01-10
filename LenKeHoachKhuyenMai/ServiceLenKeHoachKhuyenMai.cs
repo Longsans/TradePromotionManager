@@ -24,7 +24,7 @@ namespace LenKeHoachKhuyenMai
             }
         }
 
-        static public void Init()
+        public void Init()
         {
             Console.WriteLine("[Len Ke Hoach Khuyen Mai]");
             Console.WriteLine("Init");
@@ -32,7 +32,7 @@ namespace LenKeHoachKhuyenMai
             MessageBus.MessageBus.MessageSent += Recieve;
         }
 
-        static public void Send(string reciever, string func, string json)
+        public void Send(string reciever, string func, string json)
         {
             Console.WriteLine("[Len Ke Hoach Khuyen Mai]");
             Message message = new Message();
@@ -43,7 +43,7 @@ namespace LenKeHoachKhuyenMai
             MessageBus.MessageBus.SendMessage(message);
         }
 
-        static public void Recieve(string json)
+        public void Recieve(string json)
         {
             Console.WriteLine("[Len Ke Hoach Khuyen Mai]");
             Console.WriteLine(json);
