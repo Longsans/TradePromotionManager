@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CacKhuyenMaiDangChay", "Cac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LenKeHoachKhuyenMai", "LenKeHoachKhuyenMai\LenKeHoachKhuyenMai.csproj", "{BFE72F18-1873-4E80-838E-6E14DF6EC083}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "User", "User\User.csproj", "{B9A66789-A78E-4C56-8586-6AB8C28711A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{BFE72F18-1873-4E80-838E-6E14DF6EC083}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFE72F18-1873-4E80-838E-6E14DF6EC083}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFE72F18-1873-4E80-838E-6E14DF6EC083}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9A66789-A78E-4C56-8586-6AB8C28711A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9A66789-A78E-4C56-8586-6AB8C28711A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9A66789-A78E-4C56-8586-6AB8C28711A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9A66789-A78E-4C56-8586-6AB8C28711A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,7 +11,7 @@ namespace MessageBus
     public class Message
     {
         public string Sender { get; set; } = string.Empty;
-        public string Reciever { get; set; } = string.Empty;
+        public string Receiver { get; set; } = string.Empty;
         public string FunctionCall { get; set; } = string.Empty;
         public string JsonParam { get; set; } = string.Empty;
 
