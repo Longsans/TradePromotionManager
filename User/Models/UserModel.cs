@@ -9,9 +9,9 @@ namespace User.Models
     // Active record
     internal class UserModel : BaseSerializable
     {
-        public string username { get; set; }
-        public string passwordHash { get; set; }
-        public string chucVu { get; set; } // "NhanVien" or "Marketing"
+        public string username { get; set; } = "null";
+        public string passwordHash { get; set; } = "null";
+        public string chucVu { get; set; } = "null"; // "NhanVien" or "Marketing"
 
         // Business logic
         public bool CheckValidLogin()
@@ -24,10 +24,15 @@ namespace User.Models
 
         public void ChangePassword(string password)
         {
+            passwordHash = HashPassword(password);
+            Update();
+        }
+
+        public static string HashPassword(string password)
+        {
             char[] carr = password.ToCharArray();
             Array.Reverse(carr);
-            passwordHash = new string(carr);
-            Update();
+            return new string(carr);
         }
 
         // Data access

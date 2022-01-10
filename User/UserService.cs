@@ -22,14 +22,41 @@ namespace User
             return "Login failed!";
         }
 
+        public static string CreateAccount(string username, string password)
+        {
+            UserModel user = new UserModel()
+            {
+                username = username,
+                passwordHash = UserModel.HashPassword(password)
+            };
+
+            try
+            {
+                user.Insert();
+                return "Insert successful!";
+            }
+            catch (Exception ex)
+            {
+                return $"Insert failed! Error: {ex.Message}";
+            }
+        }
+
         public static string ChangePassword(string username, string newPassword)
         {
             UserModel user = new UserModel()
             {
                 username = username
             };
-            user.ChangePassword(newPassword);
-            return "Password changed.";
+
+            try
+            {
+                user.ChangePassword(newPassword);
+                return "Password changed.";
+            }
+            catch (Exception ex)
+            {
+                return $"Password change failed! Error: {ex.Message}";
+            }
         }
     }
 }

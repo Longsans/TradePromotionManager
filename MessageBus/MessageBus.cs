@@ -12,11 +12,7 @@ namespace MessageBus
 
         public static string LenDonHangService = "LenDonHangService";
         public static string CacKhuyenMaiDangChayService = "CacKhuyenMaiDangChayService";
-
-        public static string Get = "GET";
-        public static string Put = "PUT";
-        public static string Post = "POST";
-        public static string Delete = "DELETE";
+        public static string MatHangService = "MatHangService";
 
         public static void SendMessage(Message msg)
         {
