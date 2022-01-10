@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace LenDonHang.Models
+namespace User.Models
 {
     [Serializable]
     internal class BaseSerializable
     {
         public string Serialize()
         {
-            return JsonSerializer.Serialize<object>(this, new JsonSerializerOptions() { WriteIndented = true });
+            return JsonSerializer.Serialize(this);
         }
 
         public static T? Deserialize<T>(string json) where T : BaseSerializable
