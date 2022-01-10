@@ -29,21 +29,21 @@ namespace CacKhuyenMaiDangChay
             Console.WriteLine("[Cac Khuyen Mai Dang Chay]");
             Console.WriteLine("Init");
             Instance = new ServiceCacKhuyenMaiDangChay();
-            MessageBus.MessageBus.MessageSent += Recieve;
+            MessageBus.MessageBus.MessageSent += Receive;
         }
 
-        public void Send(string reciever, string func, string json)
+        public void Send(string receiver, string func, string json)
         {
             Console.WriteLine("[Cac Khuyen Mai Dang Chay]");
             Message message = new Message();
             message.Sender = "CacKhuyenMaiDangChay";
-            message.Reciever = reciever;
+            message.Receiver = receiver;
             message.FunctionCall = func;
             message.JsonParam = json;
             MessageBus.MessageBus.SendMessage(message);
         }
 
-        public void Recieve(string json)
+        public void Receive(string json)
         {
             Console.WriteLine("[Cac Khuyen Mai Dang Chay]");
             Console.WriteLine(json);

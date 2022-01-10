@@ -12,9 +12,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CacKhuyenMaiDangChay\CacKhuyenMaiDangChay.csproj" />
     <ProjectReference Include="..\CuaHang\CuaHang.csproj" />
     <ProjectReference Include="..\HoaDon\HoaDon.csproj" />
     <ProjectReference Include="..\LenDonHang\LenDonHang.csproj" />
+    <ProjectReference Include="..\LenKeHoachKhuyenMai\LenKeHoachKhuyenMai.csproj" />
   </ItemGroup>
 
 </Project>

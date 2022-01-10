@@ -29,21 +29,21 @@ namespace LenKeHoachKhuyenMai
             Console.WriteLine("[Len Ke Hoach Khuyen Mai]");
             Console.WriteLine("Init");
             Instance = new ServiceLenKeHoachKhuyenMai();
-            MessageBus.MessageBus.MessageSent += Recieve;
+            MessageBus.MessageBus.MessageSent += Receive;
         }
 
-        public void Send(string reciever, string func, string json)
+        public void Send(string receiver, string func, string json)
         {
             Console.WriteLine("[Len Ke Hoach Khuyen Mai]");
             Message message = new Message();
             message.Sender = "LenKeHoachKhuyenMai";
-            message.Reciever = reciever;
+            message.Receiver = receiver;
             message.FunctionCall = func;
             message.JsonParam = json;
             MessageBus.MessageBus.SendMessage(message);
         }
 
-        public void Recieve(string json)
+        public void Receive(string json)
         {
             Console.WriteLine("[Len Ke Hoach Khuyen Mai]");
             Console.WriteLine(json);
