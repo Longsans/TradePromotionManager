@@ -12,10 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CuaHang\CuaHang.csproj" />
-    <ProjectReference Include="..\HoaDon\HoaDon.csproj" />
-    <ProjectReference Include="..\LenDonHang\LenDonHang.csproj" />
-	<ProjectReference Include="..\MatHang\MatHang.csproj" />
+    <ProjectReference Include="..\MessageBus\MessageBus.csproj" />
   </ItemGroup>
 
 </Project>

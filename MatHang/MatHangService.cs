@@ -16,7 +16,7 @@ namespace MatHang
             return MatHangModel.GetById(idMatHang).Serialize();
         }
 
-        public static void CreateMatHang(string idMh, string tenMh, ulong donGia, params KeyValuePair<string, object>[] dacDiem)
+        public static void CreateMatHang(string idMh, string tenMh, ulong donGia, Dictionary<string, object> dacDiem)
         {
             MatHangModel mh = new MatHangModel()
             {
@@ -37,21 +37,17 @@ namespace MatHang
             }
         }
 
-        public static string EditMatHang(string idMh, params KeyValuePair<string, object>[] editedProps)
+        public static string EditMatHang(string idMh, Dictionary<string, object> editedProps)
         {
             MatHangModel mh = MatHangModel.GetById(idMh);
-            Type mhType = mh.GetType();
-            try
+            foreach (var prop in editedProps)
             {
-                foreach (var prop in editedProps)
-                {
-                    mhType.GetProperty(prop.Key).SetValue(mh, prop.Value);
-                }
+                if (mh.dacDiem.ContainsKey(prop.Key))
+                    mh.dacDiem[prop.Key] = prop.Value;
+                else 
+                    mh.dacDiem.Add(prop.Key, prop.Value);
             }
-            catch (Exception ex)
-            {
-                PostToConsole($"Edit failed! Error: {ex.Message}");
-            }
+            
             return mh.Serialize();
         }
 
