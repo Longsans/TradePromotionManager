@@ -41,6 +41,8 @@ namespace LenKeHoachKhuyenMai
 
             switch (msg.FunctionCall)
             {
+                case "GET REP":
+                    break;
                 default:
                     break;
             }
@@ -59,6 +61,11 @@ namespace LenKeHoachKhuyenMai
         public static void PostToCacKhuyenMaiDangChayService()
         {
             Send(MessageBus.MessageBus.CacKhuyenMaiDangChayService, MessageBus.MessageBus.Post, km.toJson());
+        }
+
+        public static void GetHinhThucVaTieuChiKhuyenMaiService()
+        {
+            //func
         }
     }
 }

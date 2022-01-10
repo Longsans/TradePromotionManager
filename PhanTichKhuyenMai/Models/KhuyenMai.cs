@@ -10,6 +10,7 @@ namespace PhanTichKhuyenMai.Models
 {
     internal class KhuyenMai : BaseSerializable
     {
+        public string ten { get; set; }
         public DateTime thoiGianBatDau { get; set; }
         public DateTime thoiGianKetThuc { get; set; }
         public uint soLuongHoaDon { get; set; }
@@ -22,6 +23,7 @@ namespace PhanTichKhuyenMai.Models
 
         public KhuyenMai()
         {
+            ten = string.Empty;
             thoiGianBatDau = DateTime.Now;
             thoiGianKetThuc = DateTime.Now;
             soLuongHoaDon = 0;
@@ -35,6 +37,7 @@ namespace PhanTichKhuyenMai.Models
         public KhuyenMai(string json)
         {
             JObject @object = JObject.Parse(json);
+            ten = (string?)@object[nameof(ten)] ?? string.Empty;
             thoiGianBatDau = (DateTime?)@object[nameof(thoiGianBatDau)] ?? DateTime.Now;
             thoiGianKetThuc = (DateTime?)@object[nameof(thoiGianKetThuc)] ?? DateTime.Now;
             soLuongHoaDon = (uint?)@object[nameof(soLuongHoaDon)] ?? 0;
