@@ -9,9 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageBus", "MessageBus\Me
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LenDonHang", "LenDonHang\LenDonHang.csproj", "{BEEBA4ED-8B7E-4E44-A535-BACD40F73D5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientMessageReceiver", "ClientMessageReceiver\ClientMessageReceiver.csproj", "{8B11C0B9-CDB3-4249-A603-95ADCECC23B5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User", "User\User.csproj", "{B9A66789-A78E-4C56-8586-6AB8C28711A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "User", "User\User.csproj", "{B9A66789-A78E-4C56-8586-6AB8C28711A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +29,6 @@ Global
 		{BEEBA4ED-8B7E-4E44-A535-BACD40F73D5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEEBA4ED-8B7E-4E44-A535-BACD40F73D5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEEBA4ED-8B7E-4E44-A535-BACD40F73D5A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8B11C0B9-CDB3-4249-A603-95ADCECC23B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8B11C0B9-CDB3-4249-A603-95ADCECC23B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8B11C0B9-CDB3-4249-A603-95ADCECC23B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8B11C0B9-CDB3-4249-A603-95ADCECC23B5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B9A66789-A78E-4C56-8586-6AB8C28711A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B9A66789-A78E-4C56-8586-6AB8C28711A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9A66789-A78E-4C56-8586-6AB8C28711A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
