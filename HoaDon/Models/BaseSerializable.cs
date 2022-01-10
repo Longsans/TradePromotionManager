@@ -5,16 +5,16 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace CuaHang.Models
+namespace HoaDon.Models
 {
     [Serializable]
     public abstract class BaseSerializable
     {
         public BaseSerializable() { }
 
-        public string Encode()
+        public virtual string Encode()
         {
-            return JsonSerializer.Serialize(this);
+            return JsonSerializer.Serialize(this, this.GetType());
         }
 
         public static T? Decode<T>(string json) where T : BaseSerializable
