@@ -14,6 +14,7 @@ namespace MessageBus
         public static string CacKhuyenMaiDangChayService = "CacKhuyenMaiDangChayService";
         public static string MatHangService = "MatHangService";
         public static string KhachHangService = "KhachHangService";
+        public static string HoaDonService = "HoaDonService";
         public static string UserService = "UserService";
         public static string SparkStub = "SparkStub";
 

@@ -48,31 +48,9 @@ namespace LenDonHang
         {
             SendMessage(
                 MessageBus.MessageBus.LenDonHangService,
-                MessageBus.MessageBus.SparkStub,
-                "PostDonHang",
+                MessageBus.MessageBus.HoaDonService,
+                "LuuDonHang",
                 dhJson);
-            PostToConsole("DonHang created and sent to Spark stub");
-
-            JObject dhObj = JObject.Parse(dhJson);
-            var dir = Path.Combine(
-                        Directory.GetParent(
-                            Environment.CurrentDirectory)
-                                .Parent.Parent.FullName,
-                        "HoaDonDienTu");
-            if (!Directory.Exists(dir))
-                Directory.CreateDirectory(dir);
-
-            var path = 
-                Path.Combine(
-                    dir,
-                    $"{DateTime.Now.ToString("hhmmss_yyyymmdd")}" +
-                    $"_" +
-                    $"{(string)dhObj[nameof(DonHang.khachHang)][nameof(KhachHang.idKhachHang)]}" +
-                    $".xml");
-
-            var xml = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(dhJson, "HoaDon");
-            xml?.Save(path);
-            PostToConsole($"DonHang saved to disk at {path}");
         }
 
         public static string GetCacKhuyenMaiDangChay(DateTime timestamp)
