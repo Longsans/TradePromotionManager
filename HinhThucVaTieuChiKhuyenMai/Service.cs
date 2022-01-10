@@ -1,10 +1,15 @@
 ﻿using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace CuaHang
+namespace HinhThucVaTieuChiKhuyenMai
 {
     public class Service
     {
-        public static string Name { get; set; } = "CuaHang";
+        public static string Name { get; set; } = "HinhThucVaTieuChi";
 
         static Service()
         {
@@ -37,23 +42,23 @@ namespace CuaHang
             PostToConsole($"Recieve message from {msg.Sender}");
             switch (msg.FunctionCall)
             {
-                case nameof(TimCuaHang):
-                    TimCuaHang(msg.Sender, msg.JsonParam);
+                case nameof(TimHinhThuc):
+                    TimHinhThuc(msg.Sender, json);
                     break;
             }
         }
 
-        public static void TimCuaHang(string sender, string json)
+        public static void TimHinhThuc(string sender, string json)
         {
             JObject jsonO = JObject.Parse(json);
-            string? id = (string?)jsonO["ID"];
-            if (id == null)
+            string? ten = (string?)jsonO["HinhThuc"];
+            if (ten == null)
                 return;
 
-            PostToConsole($"Tim thay cua hang voi ID {id}");
-            var cuaHang = CuaHang.Models.CuaHang.Find(id);
+            PostToConsole($"Tim thay hinh thuc {ten}");
+            var hinhThuc = HinhThucVaTieuChiKhuyenMai.Models.HinhThuc.Find(ten).Encode();
 
-            SendMessage(sender, "", cuaHang.Encode());
+            SendMessage(sender, "", hinhThuc);
         }
     }
 }

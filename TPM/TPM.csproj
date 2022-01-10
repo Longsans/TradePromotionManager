@@ -16,10 +16,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CacKhuyenMaiDangChay\CacKhuyenMaiDangChay.csproj" />
+    <ProjectReference Include="..\CacKhuyenMaiHoanThanh\CacKhuyenMaiHoanThanh.csproj" />
     <ProjectReference Include="..\CuaHang\CuaHang.csproj" />
     <ProjectReference Include="..\HoaDon\HoaDon.csproj" />
     <ProjectReference Include="..\LenDonHang\LenDonHang.csproj" />
+    <ProjectReference Include="..\LenKeHoachKhuyenMai\LenKeHoachKhuyenMai.csproj" />
 	<ProjectReference Include="..\MatHang\MatHang.csproj" />
+	<ProjectReference Include="..\PhanTichKhuyenMai\PhanTichKhuyenMai.csproj" />
   </ItemGroup>
 
 </Project>

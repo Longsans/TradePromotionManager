@@ -41,8 +41,25 @@ namespace KhachHang
             PostToConsole($"Recieve message from {msg.Sender}");
             switch (msg.FunctionCall)
             {
-
+                case nameof(TimKhachHang):
+                    TimKhachHang(msg.Sender, msg.JsonParam);
+                    break;
             }
+        }
+
+        public static void TimKhachHang(string sender, string param)
+        {
+            JObject jsonObj = JObject.Parse(param);
+            int? id = (int?)jsonObj[nameof(KhachHang.Models.KhachHang.idKhachHang)];
+            if (!id.HasValue)
+            {
+                return;
+            }
+
+            PostToConsole($"Tim thay khach hang voi ID {id}");
+
+            var khachHang = KhachHang.Models.KhachHang.FindID(id.Value);
+            SendMessage(sender, "", khachHang.Encode());
         }
     }
 }
