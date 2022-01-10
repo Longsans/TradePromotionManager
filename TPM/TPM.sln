@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LenDonHang", "..\LenDonHang
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CuaHang", "..\CuaHang\CuaHang.csproj", "{89E13C62-6329-4120-B03F-446381C5C229}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoaDon", "..\HoaDon\HoaDon.csproj", "{597C4E85-D656-43B3-84D6-4B9738158FE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HoaDon", "..\HoaDon\HoaDon.csproj", "{597C4E85-D656-43B3-84D6-4B9738158FE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KhachHang", "..\KhachHang\KhachHang.csproj", "{9F326921-7AC3-4D2E-B8FC-4E66290DED61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{597C4E85-D656-43B3-84D6-4B9738158FE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{597C4E85-D656-43B3-84D6-4B9738158FE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{597C4E85-D656-43B3-84D6-4B9738158FE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F326921-7AC3-4D2E-B8FC-4E66290DED61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F326921-7AC3-4D2E-B8FC-4E66290DED61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F326921-7AC3-4D2E-B8FC-4E66290DED61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F326921-7AC3-4D2E-B8FC-4E66290DED61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

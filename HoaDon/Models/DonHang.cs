@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace HoaDon.Models
 {
     [Serializable]
-    public class DonHang : BaseSerializable
+    public class DonHang : BaseSerializable 
     {
         public string ID { get; set; }
         public string idKhachHang { get; set; } = String.Empty;

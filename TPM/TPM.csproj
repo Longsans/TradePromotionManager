@@ -11,4 +11,10 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CuaHang\CuaHang.csproj" />
+    <ProjectReference Include="..\HoaDon\HoaDon.csproj" />
+    <ProjectReference Include="..\LenDonHang\LenDonHang.csproj" />
+  </ItemGroup>
+
 </Project>

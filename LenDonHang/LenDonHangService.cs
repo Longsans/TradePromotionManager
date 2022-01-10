@@ -8,7 +8,7 @@ using LenDonHang.Models;
 
 namespace LenDonHang
 {
-    internal class LenDonHangService
+    public  class LenDonHangService
     {
         public LenDonHangService()
         {
