@@ -60,7 +60,7 @@ namespace LenKeHoachKhuyenMai
 
         public static void PostToCacKhuyenMaiDangChayService()
         {
-            Send(MessageBus.MessageBus.CacKhuyenMaiDangChayService, MessageBus.MessageBus.Post, km.toJson());
+            Send(MessageBus.MessageBus.CacKhuyenMaiDangChayService, "POST", km.toJson());
         }
 
         public static void GetHinhThucVaTieuChiKhuyenMaiService()

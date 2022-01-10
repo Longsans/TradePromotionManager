@@ -19,7 +19,7 @@ namespace HoaDon
 
         public static void PostToConsole(string message)
         {
-            Console.WriteLine($"[{Name}]: \"{message}\"");
+            Console.WriteLine($"[{MessageBus.MessageBus.HoaDonService}]: \"{message}\"");
         }
 
         public static void SendMessage(string reciever, string callingFunction, string jsonContext)
@@ -29,7 +29,7 @@ namespace HoaDon
                 Receiver = reciever,
                 FunctionCall = callingFunction,
                 JsonParam = jsonContext,
-                Sender = Name
+                Sender = MessageBus.MessageBus.HoaDonService
             });
         }
         public static void ProcessMessage(string json)
@@ -54,10 +54,14 @@ namespace HoaDon
 
         public static void LuuDonHang(string json)
         {
-            var donHang = JsonSerializer.Deserialize<HoaDon.Models.DonHang>(json);
+            var donHang = JsonSerializer.Deserialize<Models.DonHang>(json);
             if (donHang != null)
             {
                 PostToConsole($"Luu don hang {donHang.ID}");
+                SendMessage(
+                    MessageBus.MessageBus.SparkStub,
+                    "",
+                    json);
             }
         }
         public static void TimDonHang(string sender, string json)

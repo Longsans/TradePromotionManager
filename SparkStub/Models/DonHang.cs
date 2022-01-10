@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace LenDonHang.Models
+namespace SparkStub.Models
 {
     public class DonHang : BaseCustomSerializable
     {
@@ -19,7 +19,6 @@ namespace LenDonHang.Models
 
         public DonHang()
         {
-            id = Random.Shared.Next(0, 100000000).ToString();
             khachHang = new KhachHang();
             gioHang = new List<ItemGioHang>();
             tongTien = 0;
@@ -28,6 +27,7 @@ namespace LenDonHang.Models
         {
             JObject o = JObject.Parse(json);
 
+            id = (string)o[nameof(id)];
             JObject khObj = JObject.FromObject(o[nameof(khachHang)]);
             if (khObj != null)
             {
@@ -47,12 +47,11 @@ namespace LenDonHang.Models
                 };
                 gioHang.Add(new ItemGioHang(matHang, (int?)item["soLuong"] ?? 0));
             }
+            tongTien = (ulong?)o[nameof(tongTien)] ?? 0;
         }
 
         public override string toJson()
         {
-            CalcTongTien();
-
             JObject json = new JObject
             {
                 [nameof(id)] = id,
@@ -68,39 +67,6 @@ namespace LenDonHang.Models
             };
 
             return json.ToString(Formatting.Indented);
-        }
-
-        public string SerializeXml()
-        {
-            using (var stringWriter = new StringWriter())
-            {
-                var serializer = new XmlSerializer(this.GetType());
-                serializer.Serialize(stringWriter, this);
-                return stringWriter.ToString();
-            }
-        }
-
-        public static DonHang? DeserializeXml(string xml)
-        {
-            using (var stringReader = new StringReader(xml))
-            {
-                var serializer = new XmlSerializer(typeof(DonHang));
-                return serializer.Deserialize(stringReader) as DonHang;
-            }
-        }
-
-        public void WriteTo(string path)
-        {
-            File.WriteAllText(path, SerializeXml());
-        }
-
-        public ulong CalcTongTien()
-        {
-            tongTien = 0;
-            foreach (var item in gioHang)
-                tongTien += item.thanhTien;
-
-            return tongTien;
         }
 
         public static string matHangStr = "matHang";

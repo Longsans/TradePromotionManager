@@ -61,7 +61,7 @@ namespace PhanTichKhuyenMai
 
         public static void GetCacKhuyenMaiHoanThanh()
         {
-            Send(MessageBus.MessageBus.CacKhuyenMaiHoanThanhService, MessageBus.MessageBus.Get, "");
+            Send(MessageBus.MessageBus.CacKhuyenMaiHoanThanhService, "GET", "");
         }
     }
 }

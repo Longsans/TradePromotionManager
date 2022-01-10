@@ -64,7 +64,7 @@ namespace CacKhuyenMaiDangChay
             km.soLuongHoaDon = 100;
             km.tongThanhTien = 100000;
             km.laiSuat = (long)(km.tongThanhTien - km.von);
-            Send(MessageBus.MessageBus.CacKhuyenMaiHoanThanhService, MessageBus.MessageBus.Post, km.toJson());
+            Send(MessageBus.MessageBus.CacKhuyenMaiHoanThanhService, "POST", km.toJson());
         }
     }
 }
