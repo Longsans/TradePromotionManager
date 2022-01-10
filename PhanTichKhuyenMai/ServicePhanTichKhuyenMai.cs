@@ -5,19 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using MessageBus;
 
-namespace LenKeHoachKhuyenMai
+namespace PhanTichKhuyenMai
 {
-    public class ServiceLenKeHoachKhuyenMai
+    public class ServicePhanTichKhuyenMai
     {
-        public static string Name { get; set; } = "Len Ke Hoach Khuyen Mai";
+        public static string Name { get; set; } = "Phan Tich Khuyen Mai";
 
-        static private ServiceLenKeHoachKhuyenMai? _instance = null;
-        static public ServiceLenKeHoachKhuyenMai Instance
+        static private ServicePhanTichKhuyenMai? _instance = null;
+        static public ServicePhanTichKhuyenMai Instance
         {
             get
             {
                 if (_instance == null)
-                    _instance = new ServiceLenKeHoachKhuyenMai();
+                    _instance = new ServicePhanTichKhuyenMai();
                 return _instance;
             }
             private set
@@ -29,7 +29,7 @@ namespace LenKeHoachKhuyenMai
         public void Init()
         {
             PostToConsole("Init");
-            Instance = new ServiceLenKeHoachKhuyenMai();
+            Instance = new ServicePhanTichKhuyenMai();
             MessageBus.MessageBus.MessageSent += Receive;
         }
 
@@ -37,7 +37,7 @@ namespace LenKeHoachKhuyenMai
         {
             PostToConsole("");
             Message message = new Message();
-            message.Sender = MessageBus.MessageBus.LenKeHoachKhuyenMaiService;
+            message.Sender = MessageBus.MessageBus.PhanTichKhuyenMaiService;
             message.Receiver = receiver;
             message.FunctionCall = func;
             message.JsonParam = json;
@@ -48,7 +48,7 @@ namespace LenKeHoachKhuyenMai
         {
             var msg = Message.Decode(json);
 
-            if (msg == null || msg.Receiver != MessageBus.MessageBus.LenKeHoachKhuyenMaiService)
+            if (msg == null || msg.Receiver != MessageBus.MessageBus.PhanTichKhuyenMaiService)
                 return;
 
             PostToConsole($"Received Message: {json}");

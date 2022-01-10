@@ -5,19 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using MessageBus;
 
-namespace LenKeHoachKhuyenMai
+namespace CacKhuyenMaiHoanThanh
 {
-    public class ServiceLenKeHoachKhuyenMai
+    public class ServiceCacKhuyenMaiHoanThanh
     {
-        public static string Name { get; set; } = "Len Ke Hoach Khuyen Mai";
+        public static string Name { get; set; } = "Cac Khuyen Mai Hoan Thanh";
 
-        static private ServiceLenKeHoachKhuyenMai? _instance = null;
-        static public ServiceLenKeHoachKhuyenMai Instance
+        static private ServiceCacKhuyenMaiHoanThanh? _instance = null;
+        static public ServiceCacKhuyenMaiHoanThanh Instance
         {
             get
             {
                 if (_instance == null)
-                    _instance = new ServiceLenKeHoachKhuyenMai();
+                    _instance = new ServiceCacKhuyenMaiHoanThanh();
                 return _instance;
             }
             private set
@@ -29,7 +29,7 @@ namespace LenKeHoachKhuyenMai
         public void Init()
         {
             PostToConsole("Init");
-            Instance = new ServiceLenKeHoachKhuyenMai();
+            Instance = new ServiceCacKhuyenMaiHoanThanh();
             MessageBus.MessageBus.MessageSent += Receive;
         }
 
@@ -37,7 +37,7 @@ namespace LenKeHoachKhuyenMai
         {
             PostToConsole("");
             Message message = new Message();
-            message.Sender = MessageBus.MessageBus.LenKeHoachKhuyenMaiService;
+            message.Sender = MessageBus.MessageBus.CacKhuyenMaiHoanThanhService;
             message.Receiver = receiver;
             message.FunctionCall = func;
             message.JsonParam = json;
@@ -48,7 +48,7 @@ namespace LenKeHoachKhuyenMai
         {
             var msg = Message.Decode(json);
 
-            if (msg == null || msg.Receiver != MessageBus.MessageBus.LenKeHoachKhuyenMaiService)
+            if (msg == null || msg.Receiver != MessageBus.MessageBus.CacKhuyenMaiHoanThanhService)
                 return;
 
             PostToConsole($"Received Message: {json}");

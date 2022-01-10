@@ -9,6 +9,8 @@ namespace CacKhuyenMaiDangChay
 {
     public class ServiceCacKhuyenMaiDangChay
     {
+        public static string Name { get; set; } = "Cac Khuyen Mai Dang Chay";
+
         static private ServiceCacKhuyenMaiDangChay? _instance = null;
         static public ServiceCacKhuyenMaiDangChay Instance
         {
@@ -26,17 +28,16 @@ namespace CacKhuyenMaiDangChay
 
         public void Init()
         {
-            Console.WriteLine("[Cac Khuyen Mai Dang Chay]");
-            Console.WriteLine("Init");
+            PostToConsole("Init");
             Instance = new ServiceCacKhuyenMaiDangChay();
             MessageBus.MessageBus.MessageSent += Receive;
         }
 
         public void Send(string receiver, string func, string json)
         {
-            Console.WriteLine("[Cac Khuyen Mai Dang Chay]");
+            PostToConsole("");
             Message message = new Message();
-            message.Sender = "CacKhuyenMaiDangChay";
+            message.Sender = MessageBus.MessageBus.CacKhuyenMaiDangChayService;
             message.Receiver = receiver;
             message.FunctionCall = func;
             message.JsonParam = json;
@@ -45,8 +46,23 @@ namespace CacKhuyenMaiDangChay
 
         public void Receive(string json)
         {
-            Console.WriteLine("[Cac Khuyen Mai Dang Chay]");
-            Console.WriteLine(json);
+            var msg = Message.Decode(json);
+
+            if (msg == null || msg.Receiver != MessageBus.MessageBus.CacKhuyenMaiDangChayService)
+                return;
+
+            PostToConsole($"Received Message: {json}");
+
+            switch (msg.FunctionCall)
+            {
+                default:
+                    break;
+            }
+        }
+
+        public void PostToConsole(string message)
+        {
+            Console.WriteLine($"[{Name}]: {message}");
         }
     }
 }
