@@ -11,4 +11,4 @@ RuntimeHelpers.RunClassConstructor(typeof(LenDonHang.LenDonHangService).TypeHand
 ServiceCacKhuyenMaiDangChay.Instance.Init();
 ServiceLenKeHoachKhuyenMai.Instance.Init();
 
-ServiceLenKeHoachKhuyenMai.Instance.Send(MessageBus.MessageBus.CacKhuyenMaiDangChayService, "b", "cc");
+ServiceLenKeHoachKhuyenMai.Instance.PostToCacKhuyenMaiDangChayService();

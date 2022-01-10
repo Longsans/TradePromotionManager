@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MessageBus;
+using CacKhuyenMaiDangChay.Models;
 
 namespace CacKhuyenMaiDangChay
 {
     public class ServiceCacKhuyenMaiDangChay
     {
         public static string Name { get; set; } = "Cac Khuyen Mai Dang Chay";
+        KhuyenMai km = new KhuyenMai();
 
         static private ServiceCacKhuyenMaiDangChay? _instance = null;
         static public ServiceCacKhuyenMaiDangChay Instance
@@ -51,10 +53,13 @@ namespace CacKhuyenMaiDangChay
             if (msg == null || msg.Receiver != MessageBus.MessageBus.CacKhuyenMaiDangChayService)
                 return;
 
-            PostToConsole($"Received Message: {json}");
-
             switch (msg.FunctionCall)
             {
+                case "POST":
+                    PostToConsole("Received Message POST");
+                    km = new KhuyenMai(msg.JsonParam);
+                    Console.WriteLine(msg.JsonParam);
+                    break;
                 default:
                     break;
             }

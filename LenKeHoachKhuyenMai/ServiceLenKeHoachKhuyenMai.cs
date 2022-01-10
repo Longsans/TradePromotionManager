@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MessageBus;
+using LenKeHoachKhuyenMai.Models;
 
 namespace LenKeHoachKhuyenMai
 {
     public class ServiceLenKeHoachKhuyenMai
     {
         public static string Name { get; set; } = "Len Ke Hoach Khuyen Mai";
+        KhuyenMai km = new KhuyenMai("{\"thoiGianBatDau\":\"12/12/2021\",\"thoiGianKetThuc\":\"2/2/2022\",\"soLuongMucTieu\":200,\"von\":10000,\"laiSuatMucTieu\":50000}");
 
         static private ServiceLenKeHoachKhuyenMai? _instance = null;
         static public ServiceLenKeHoachKhuyenMai Instance
@@ -63,6 +65,11 @@ namespace LenKeHoachKhuyenMai
         public void PostToConsole(string message)
         {
             Console.WriteLine($"[{Name}]: {message}");
+        }
+
+        public void PostToCacKhuyenMaiDangChayService()
+        {
+            Send(MessageBus.MessageBus.CacKhuyenMaiDangChayService, MessageBus.MessageBus.Post, km.toJson());
         }
     }
 }
