@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageBus", "MessageBus\Me
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LenDonHang", "LenDonHang\LenDonHang.csproj", "{BEEBA4ED-8B7E-4E44-A535-BACD40F73D5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CacKhuyenMaiDangChay", "CacKhuyenMaiDangChay\CacKhuyenMaiDangChay.csproj", "{727405F7-D7B6-4F46-81CE-8DC414E7BED8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CacKhuyenMaiDangChay", "CacKhuyenMaiDangChay\CacKhuyenMaiDangChay.csproj", "{727405F7-D7B6-4F46-81CE-8DC414E7BED8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LenKeHoachKhuyenMai", "LenKeHoachKhuyenMai\LenKeHoachKhuyenMai.csproj", "{BFE72F18-1873-4E80-838E-6E14DF6EC083}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{727405F7-D7B6-4F46-81CE-8DC414E7BED8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{727405F7-D7B6-4F46-81CE-8DC414E7BED8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{727405F7-D7B6-4F46-81CE-8DC414E7BED8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFE72F18-1873-4E80-838E-6E14DF6EC083}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFE72F18-1873-4E80-838E-6E14DF6EC083}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFE72F18-1873-4E80-838E-6E14DF6EC083}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFE72F18-1873-4E80-838E-6E14DF6EC083}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

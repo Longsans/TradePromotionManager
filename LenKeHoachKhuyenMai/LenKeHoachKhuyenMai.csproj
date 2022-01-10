@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -8,8 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CacKhuyenMaiDangChay\CacKhuyenMaiDangChay.csproj" />
-    <ProjectReference Include="..\LenKeHoachKhuyenMai\LenKeHoachKhuyenMai.csproj" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MessageBus\MessageBus.csproj" />
   </ItemGroup>
 
 </Project>

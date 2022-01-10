@@ -1,2 +1,8 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using CacKhuyenMaiDangChay;
+using LenKeHoachKhuyenMai;
+
+
 Console.WriteLine("[The Main Program]");
+ServiceCacKhuyenMaiDangChay.Init();
+ServiceLenKeHoachKhuyenMai.Init();
+ServiceLenKeHoachKhuyenMai.Send("A");
