@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MessageBus;
-using PhanTichKhuyenMai.Models;
+using CacKhuyenMaiHoanThanh.Models;
 
-namespace PhanTichKhuyenMai
+namespace CacKhuyenMaiHoanThanh
 {
-    public static class ServicePhanTichKhuyenMai
+    public static class Service
     {
-        public static string Name { get; set; } = "Phan Tich Khuyen Mai";
+        public static string Name { get; set; } = "Cac Khuyen Mai Hoan Thanh";
         static KhuyenMai km = new KhuyenMai();
 
-        static ServicePhanTichKhuyenMai()
+        static Service()
         {
             PostToConsole("Init");
             MessageBus.MessageBus.MessageSent += Receive;
@@ -23,7 +23,7 @@ namespace PhanTichKhuyenMai
         {
             PostToConsole("");
             Message message = new Message();
-            message.Sender = MessageBus.MessageBus.PhanTichKhuyenMaiService;
+            message.Sender = MessageBus.MessageBus.CacKhuyenMaiHoanThanhService;
             message.Receiver = receiver;
             message.FunctionCall = func;
             message.JsonParam = json;
@@ -34,13 +34,17 @@ namespace PhanTichKhuyenMai
         {
             var msg = Message.Decode(json);
 
-            if (msg == null || msg.Receiver != MessageBus.MessageBus.PhanTichKhuyenMaiService)
+            if (msg == null || msg.Receiver != MessageBus.MessageBus.CacKhuyenMaiHoanThanhService)
                 return;
 
             switch (msg.FunctionCall)
             {
-                case "GET REP":
-                    PostToConsole("Received Message GET REP");
+                case "GET":
+                    PostToConsole("Received Message GET");
+                    Send(MessageBus.MessageBus.PhanTichKhuyenMaiService, "GET REP", km.toJson());
+                    break;
+                case "POST":
+                    PostToConsole("Received Message POST");
                     km = new KhuyenMai(msg.JsonParam);
                     Console.WriteLine(msg.JsonParam);
                     break;
@@ -57,11 +61,6 @@ namespace PhanTichKhuyenMai
                 return;
 
             Console.WriteLine(message);
-        }
-
-        public static void GetCacKhuyenMaiHoanThanh()
-        {
-            Send(MessageBus.MessageBus.CacKhuyenMaiHoanThanhService, MessageBus.MessageBus.Get, "");
         }
     }
 }

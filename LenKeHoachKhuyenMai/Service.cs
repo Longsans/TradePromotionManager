@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MessageBus;
-using CacKhuyenMaiHoanThanh.Models;
+using LenKeHoachKhuyenMai.Models;
 
-namespace CacKhuyenMaiHoanThanh
+namespace LenKeHoachKhuyenMai
 {
-    public static class ServiceCacKhuyenMaiHoanThanh
+    public static class Service
     {
-        public static string Name { get; set; } = "Cac Khuyen Mai Hoan Thanh";
-        static KhuyenMai km = new KhuyenMai();
+        public static string Name { get; set; } = "Len Ke Hoach Khuyen Mai";
+        static KhuyenMai km = new KhuyenMai("{\"ten\":\"Sales Tet\",\"thoiGianBatDau\":\"12/12/2021\",\"thoiGianKetThuc\":\"2/2/2022\",\"soLuongMucTieu\":200,\"von\":10000,\"laiSuatMucTieu\":50000}");
 
-        static ServiceCacKhuyenMaiHoanThanh()
+        static Service()
         {
             PostToConsole("Init");
             MessageBus.MessageBus.MessageSent += Receive;
@@ -23,7 +23,7 @@ namespace CacKhuyenMaiHoanThanh
         {
             PostToConsole("");
             Message message = new Message();
-            message.Sender = MessageBus.MessageBus.CacKhuyenMaiHoanThanhService;
+            message.Sender = MessageBus.MessageBus.LenKeHoachKhuyenMaiService;
             message.Receiver = receiver;
             message.FunctionCall = func;
             message.JsonParam = json;
@@ -34,19 +34,14 @@ namespace CacKhuyenMaiHoanThanh
         {
             var msg = Message.Decode(json);
 
-            if (msg == null || msg.Receiver != MessageBus.MessageBus.CacKhuyenMaiHoanThanhService)
+            if (msg == null || msg.Receiver != MessageBus.MessageBus.LenKeHoachKhuyenMaiService)
                 return;
+
+            PostToConsole($"Received Message: {json}");
 
             switch (msg.FunctionCall)
             {
-                case "GET":
-                    PostToConsole("Received Message GET");
-                    Send(MessageBus.MessageBus.PhanTichKhuyenMaiService, "GET REP", km.toJson());
-                    break;
-                case "POST":
-                    PostToConsole("Received Message POST");
-                    km = new KhuyenMai(msg.JsonParam);
-                    Console.WriteLine(msg.JsonParam);
+                case "GET REP":
                     break;
                 default:
                     break;
@@ -61,6 +56,16 @@ namespace CacKhuyenMaiHoanThanh
                 return;
 
             Console.WriteLine(message);
+        }
+
+        public static void PostToCacKhuyenMaiDangChayService()
+        {
+            Send(MessageBus.MessageBus.CacKhuyenMaiDangChayService, MessageBus.MessageBus.Post, km.toJson());
+        }
+
+        public static void GetHinhThucVaTieuChiKhuyenMaiService()
+        {
+            //func
         }
     }
 }

@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MessageBus;
-using CacKhuyenMaiDangChay.Models;
+using PhanTichKhuyenMai.Models;
 
-namespace CacKhuyenMaiDangChay
+namespace PhanTichKhuyenMai
 {
-    public static class ServiceCacKhuyenMaiDangChay
+    public static class Service
     {
-        public static string Name { get; set; } = "Cac Khuyen Mai Dang Chay";
+        public static string Name { get; set; } = "Phan Tich Khuyen Mai";
         static KhuyenMai km = new KhuyenMai();
 
-        static ServiceCacKhuyenMaiDangChay()
+        static Service()
         {
             PostToConsole("Init");
             MessageBus.MessageBus.MessageSent += Receive;
@@ -23,7 +23,7 @@ namespace CacKhuyenMaiDangChay
         {
             PostToConsole("");
             Message message = new Message();
-            message.Sender = MessageBus.MessageBus.CacKhuyenMaiDangChayService;
+            message.Sender = MessageBus.MessageBus.PhanTichKhuyenMaiService;
             message.Receiver = receiver;
             message.FunctionCall = func;
             message.JsonParam = json;
@@ -34,13 +34,13 @@ namespace CacKhuyenMaiDangChay
         {
             var msg = Message.Decode(json);
 
-            if (msg == null || msg.Receiver != MessageBus.MessageBus.CacKhuyenMaiDangChayService)
+            if (msg == null || msg.Receiver != MessageBus.MessageBus.PhanTichKhuyenMaiService)
                 return;
 
             switch (msg.FunctionCall)
             {
-                case "POST":
-                    PostToConsole("Received Message POST");
+                case "GET REP":
+                    PostToConsole("Received Message GET REP");
                     km = new KhuyenMai(msg.JsonParam);
                     Console.WriteLine(msg.JsonParam);
                     break;
@@ -59,12 +59,9 @@ namespace CacKhuyenMaiDangChay
             Console.WriteLine(message);
         }
 
-        public static void PostToCacKhuyenMaiDangChayService()
+        public static void GetCacKhuyenMaiHoanThanh()
         {
-            km.soLuongHoaDon = 100;
-            km.tongThanhTien = 100000;
-            km.laiSuat = (long)(km.tongThanhTien - km.von);
-            Send(MessageBus.MessageBus.CacKhuyenMaiHoanThanhService, MessageBus.MessageBus.Post, km.toJson());
+            Send(MessageBus.MessageBus.CacKhuyenMaiHoanThanhService, MessageBus.MessageBus.Get, "");
         }
     }
 }

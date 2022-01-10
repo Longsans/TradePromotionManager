@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MessageBus;
-using LenKeHoachKhuyenMai.Models;
+using CacKhuyenMaiDangChay.Models;
 
-namespace LenKeHoachKhuyenMai
+namespace CacKhuyenMaiDangChay
 {
-    public static class ServiceLenKeHoachKhuyenMai
+    public static class Service
     {
-        public static string Name { get; set; } = "Len Ke Hoach Khuyen Mai";
-        static KhuyenMai km = new KhuyenMai("{\"ten\":\"Sales Tet\",\"thoiGianBatDau\":\"12/12/2021\",\"thoiGianKetThuc\":\"2/2/2022\",\"soLuongMucTieu\":200,\"von\":10000,\"laiSuatMucTieu\":50000}");
+        public static string Name { get; set; } = "Cac Khuyen Mai Dang Chay";
+        static KhuyenMai km = new KhuyenMai();
 
-        static ServiceLenKeHoachKhuyenMai()
+        static Service()
         {
             PostToConsole("Init");
             MessageBus.MessageBus.MessageSent += Receive;
@@ -23,7 +23,7 @@ namespace LenKeHoachKhuyenMai
         {
             PostToConsole("");
             Message message = new Message();
-            message.Sender = MessageBus.MessageBus.LenKeHoachKhuyenMaiService;
+            message.Sender = MessageBus.MessageBus.CacKhuyenMaiDangChayService;
             message.Receiver = receiver;
             message.FunctionCall = func;
             message.JsonParam = json;
@@ -34,14 +34,15 @@ namespace LenKeHoachKhuyenMai
         {
             var msg = Message.Decode(json);
 
-            if (msg == null || msg.Receiver != MessageBus.MessageBus.LenKeHoachKhuyenMaiService)
+            if (msg == null || msg.Receiver != MessageBus.MessageBus.CacKhuyenMaiDangChayService)
                 return;
-
-            PostToConsole($"Received Message: {json}");
 
             switch (msg.FunctionCall)
             {
-                case "GET REP":
+                case "POST":
+                    PostToConsole("Received Message POST");
+                    km = new KhuyenMai(msg.JsonParam);
+                    Console.WriteLine(msg.JsonParam);
                     break;
                 default:
                     break;
@@ -58,14 +59,12 @@ namespace LenKeHoachKhuyenMai
             Console.WriteLine(message);
         }
 
-        public static void PostToCacKhuyenMaiDangChayService()
+        public static void PostToCacKhuyenMaiHoanThanhService()
         {
-            Send(MessageBus.MessageBus.CacKhuyenMaiDangChayService, MessageBus.MessageBus.Post, km.toJson());
-        }
-
-        public static void GetHinhThucVaTieuChiKhuyenMaiService()
-        {
-            //func
+            km.soLuongHoaDon = 100;
+            km.tongThanhTien = 100000;
+            km.laiSuat = (long)(km.tongThanhTien - km.von);
+            Send(MessageBus.MessageBus.CacKhuyenMaiHoanThanhService, MessageBus.MessageBus.Post, km.toJson());
         }
     }
 }
