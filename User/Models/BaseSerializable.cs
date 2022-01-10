@@ -11,7 +11,7 @@ namespace User.Models
     {
         public string Serialize()
         {
-            return JsonSerializer.Serialize(this);
+            return JsonSerializer.Serialize<object>(this, new JsonSerializerOptions() { WriteIndented = true });
         }
 
         public static T? Deserialize<T>(string json) where T : BaseSerializable

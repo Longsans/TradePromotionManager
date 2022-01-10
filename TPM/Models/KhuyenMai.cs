@@ -12,7 +12,7 @@ namespace TPM.Models
         public DateTime? thoiGianBatDau { get; set; }
         public DateTime? thoiGianKetThuc { get; set; }
         public string hinhThuc { get; set; }
-        public TieuChiKhuyenMai tieuChi { get; set; }
+        public TieuChiKhuyenMai? tieuChi { get; set; }
 
         public KhuyenMai()
         {
@@ -20,7 +20,7 @@ namespace TPM.Models
             thoiGianBatDau = null;
             thoiGianKetThuc = null;
             hinhThuc = "null";
-            tieuChi = new TieuChiKhuyenMai();
+            tieuChi = null;
         }
     }
 }
