@@ -9,7 +9,7 @@ using Newtonsoft.Json.Linq;
 
 namespace LenDonHang.Models
 {
-    internal class DonHang : BaseSerializable
+    internal class DonHang : BaseCustomSerializable
     {
         public KhachHang khachHang { get; set; }
         public List<ItemGioHang> gioHang { get; set; }

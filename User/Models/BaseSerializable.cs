@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace LenDonHang.Models
+namespace User.Models
 {
     [Serializable]
     internal class BaseSerializable

@@ -29,4 +29,17 @@ MatHang mh = new MatHang("{\"idMatHang\":\"mnop\",\"tenMatHang\":\"Áo thun\",\"
 
 KhachHang kh = new KhachHang("{\"idKhachHang\":120,\"tenKhachHang\":\"Long\",\"soDienThoai\":\"0901234567\",\"diemTichLuy\":225}");
 
-Console.WriteLine(kh.toJson());
+KhuyenMai km = new KhuyenMai()
+{
+    hinhThuc = "TPR",
+    tenKhuyenMai = "Khuyen mai Tet 2022",
+    thoiGianBatDau = new DateTime(2022, 2, 1),
+    thoiGianKetThuc = new DateTime(2022, 2, 21),
+    tieuChi = new TieuChiKhuyenMai()
+    {
+        tongTienDonHang = 2000000
+    },
+    giamGia = 0.15f,
+};
+
+Console.WriteLine(km.Serialize());
