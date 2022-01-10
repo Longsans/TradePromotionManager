@@ -8,7 +8,7 @@ using Newtonsoft.Json.Linq;
 
 namespace LenDonHang.Models
 {
-    internal class KhachHang : BaseCustomSerializable
+    public class KhachHang : BaseCustomSerializable
     {
         public int idKhachHang { get; set; }
         public string tenKhachHang { get; set; }

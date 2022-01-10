@@ -9,7 +9,7 @@ namespace User
 {
     internal class UserService
     {
-        public static string TryLogin(string username, string passwordHash)
+        public static void TryLogin(string username, string passwordHash)
         {
             UserModel user = new UserModel()
             {
@@ -18,11 +18,11 @@ namespace User
             };
 
             if (user.CheckValidLogin())
-                return "Login succeeded!";
-            return "Login failed!";
+                PostToConsole("Login success!");
+            PostToConsole("Login failed!");
         }
 
-        public static string CreateAccount(string username, string password)
+        public static void CreateAccount(string username, string password)
         {
             UserModel user = new UserModel()
             {
@@ -33,15 +33,15 @@ namespace User
             try
             {
                 user.Insert();
-                return "Insert successful!";
+                PostToConsole("Insert successful!");
             }
             catch (Exception ex)
             {
-                return $"Insert failed! Error: {ex.Message}";
+                PostToConsole($"Insert failed! Error: {ex.Message}");
             }
         }
 
-        public static string ChangePassword(string username, string newPassword)
+        public static void ChangePassword(string username, string newPassword)
         {
             UserModel user = new UserModel()
             {
@@ -51,12 +51,17 @@ namespace User
             try
             {
                 user.ChangePassword(newPassword);
-                return "Password changed.";
+                PostToConsole("Password changed.");
             }
             catch (Exception ex)
             {
-                return $"Password change failed! Error: {ex.Message}";
+                PostToConsole($"Password change failed! Error: {ex.Message}");
             }
+        }
+
+        public static void PostToConsole(string message)
+        {
+            Console.WriteLine($"[{MessageBus.MessageBus.UserService}]: \"{message}\"");
         }
     }
 }

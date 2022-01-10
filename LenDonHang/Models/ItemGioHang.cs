@@ -8,12 +8,16 @@ using Newtonsoft.Json.Linq;
 
 namespace LenDonHang.Models
 {
-    internal class ItemGioHang : BaseCustomSerializable
+    public class ItemGioHang : BaseCustomSerializable
     {
         public MatHang matHang { get; set; }
         public int soLuong { get; set; }
         public ulong thanhTien { get; set; }
 
+        public ItemGioHang()
+        {
+
+        }
         public ItemGioHang(MatHang mh, int sl)
         {
             matHang = mh;

@@ -23,6 +23,9 @@ namespace MessageBus
         public static string Delete = "DELETE";
 
         public static string MatHangService = "MatHangService";
+        public static string KhachHangService = "KhachHangService";
+        public static string UserService = "UserService";
+        public static string SparkStub = "SparkStub";
 
         public static void SendMessage(Message msg)
         {
