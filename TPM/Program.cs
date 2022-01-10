@@ -22,3 +22,12 @@ var res =
     );
 
 Console.WriteLine(res);
+
+RuntimeHelpers.RunClassConstructor(typeof(CacKhuyenMaiDangChay.Service).TypeHandle);
+RuntimeHelpers.RunClassConstructor(typeof(CacKhuyenMaiHoanThanh.Service).TypeHandle);
+RuntimeHelpers.RunClassConstructor(typeof(PhanTichKhuyenMai.Service).TypeHandle);
+RuntimeHelpers.RunClassConstructor(typeof(LenKeHoachKhuyenMai.Service).TypeHandle);
+
+LenKeHoachKhuyenMai.Service.PostToCacKhuyenMaiDangChayService();
+CacKhuyenMaiDangChay.Service.PostToCacKhuyenMaiHoanThanhService();
+PhanTichKhuyenMai.Service.GetCacKhuyenMaiHoanThanh();
