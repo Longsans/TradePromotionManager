@@ -24,11 +24,6 @@ namespace LenDonHang.Models
         }
         public MatHang(string json)
         {
-            //var obj = JsonConvert.DeserializeObject<MatHang>(json) ?? new MatHang();
-            //tenMatHang = obj.tenMatHang;
-            //donGia = obj.donGia;
-            //dacDiem = obj.dacDiem;
-
             JObject obj = JObject.Parse(json);
             idMatHang = (string?)obj[nameof(idMatHang)] ?? "null";
             tenMatHang = (string?)obj[nameof(tenMatHang)] ?? "null";
