@@ -34,7 +34,7 @@ namespace LenDonHang
             {
                 Sender = MessageBus.MessageBus.LenDonHangService,
                 Receiver = MessageBus.MessageBus.CacKhuyenMaiDangChayService,
-                FunctionCall = MessageBus.MessageBus.Get,
+                FunctionCall = "GetDangChay",
                 JsonParam = JsonSerializer.Serialize(timestamp)
             });
         }

@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LenDonHang", "LenDonHang\Le
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "User", "User\User.csproj", "{B9A66789-A78E-4C56-8586-6AB8C28711A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatHang", "MatHang\MatHang.csproj", "{2B4D715C-8316-4712-AB10-8DA2327BA9EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{B9A66789-A78E-4C56-8586-6AB8C28711A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9A66789-A78E-4C56-8586-6AB8C28711A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9A66789-A78E-4C56-8586-6AB8C28711A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B4D715C-8316-4712-AB10-8DA2327BA9EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B4D715C-8316-4712-AB10-8DA2327BA9EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B4D715C-8316-4712-AB10-8DA2327BA9EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B4D715C-8316-4712-AB10-8DA2327BA9EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
