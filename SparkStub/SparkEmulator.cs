@@ -16,12 +16,12 @@ namespace SparkStub
                 if (msg.Sender == MessageBus.MessageBus.HoaDonService)
                 {
                     DonHang dh = new DonHang(msg.JsonParam);
-                    //SendMessage(
-                    //    MessageBus.MessageBus.SparkStub,
-                    //    MessageBus.MessageBus.PhanTichService,
-                    //    "GET REP",
-                    //    )
-                    PostToConsole($"Saved information of DonHang with id {dh.id} for PhanTichKhuyenMai");
+                    SendMessage(
+                        MessageBus.MessageBus.SparkStub,
+                        MessageBus.MessageBus.PhanTichKhuyenMaiService,
+                        "",
+                        msg.JsonParam);
+                    PostToConsole($"Saved information of DonHang with id {dh.id} for analysis.");
                 }
             };
         }
