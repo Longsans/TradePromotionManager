@@ -24,27 +24,29 @@ namespace LenKeHoachKhuyenMai
             }
         }
 
-        private ServiceLenKeHoachKhuyenMai()
-        {
-
-        }
-
         static public void Init()
         {
             Console.WriteLine("[Len Ke Hoach Khuyen Mai]");
             Console.WriteLine("Init");
             Instance = new ServiceLenKeHoachKhuyenMai();
+            MessageBus.MessageBus.MessageSent += Recieve;
         }
 
-        static public void Send(string json)
+        static public void Send(string reciever, string func, string json)
         {
             Console.WriteLine("[Len Ke Hoach Khuyen Mai]");
             Message message = new Message();
-            message.Sender = "CacKhuyenMaiDangChay";
-            message.Reciever = "LenKeHoachKhuyenMai";
-            message.FunctionCall = "Check";
+            message.Sender = "LenKeHoachKhuyenMai";
+            message.Reciever = reciever;
+            message.FunctionCall = func;
             message.JsonParam = json;
             MessageBus.MessageBus.SendMessage(message);
+        }
+
+        static public void Recieve(string json)
+        {
+            Console.WriteLine("[Len Ke Hoach Khuyen Mai]");
+            Console.WriteLine(json);
         }
     }
 }

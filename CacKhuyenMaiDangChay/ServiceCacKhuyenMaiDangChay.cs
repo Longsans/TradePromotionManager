@@ -24,28 +24,26 @@ namespace CacKhuyenMaiDangChay
             }
         }
 
-        private ServiceCacKhuyenMaiDangChay()
-        {
-            MessageBus.MessageBus.MessageSent += Receive;
-        }
-
         static public void Init()
         {
             Console.WriteLine("[Cac Khuyen Mai Dang Chay]");
             Console.WriteLine("Init");
             Instance = new ServiceCacKhuyenMaiDangChay();
+            MessageBus.MessageBus.MessageSent += Recieve;
         }
 
-        static public void Send()
+        static public void Send(string reciever, string func, string json)
         {
             Console.WriteLine("[Cac Khuyen Mai Dang Chay]");
             Message message = new Message();
             message.Sender = "CacKhuyenMaiDangChay";
-            message.Reciever = "LenKeHoachKhuyenMai";
-            message.FunctionCall = "";
+            message.Reciever = reciever;
+            message.FunctionCall = func;
+            message.JsonParam = json;
+            MessageBus.MessageBus.SendMessage(message);
         }
 
-        static public void Receive(string json)
+        static public void Recieve(string json)
         {
             Console.WriteLine("[Cac Khuyen Mai Dang Chay]");
             Console.WriteLine(json);
