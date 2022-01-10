@@ -11,7 +11,7 @@ namespace LenKeHoachKhuyenMai
     public static class ServiceLenKeHoachKhuyenMai
     {
         public static string Name { get; set; } = "Len Ke Hoach Khuyen Mai";
-        static KhuyenMai km = new KhuyenMai("{\"thoiGianBatDau\":\"12/12/2021\",\"thoiGianKetThuc\":\"2/2/2022\",\"soLuongMucTieu\":200,\"von\":10000,\"laiSuatMucTieu\":50000}");
+        static KhuyenMai km = new KhuyenMai("{\"ten\":\"Sales Tet\",\"thoiGianBatDau\":\"12/12/2021\",\"thoiGianKetThuc\":\"2/2/2022\",\"soLuongMucTieu\":200,\"von\":10000,\"laiSuatMucTieu\":50000}");
 
         static ServiceLenKeHoachKhuyenMai()
         {

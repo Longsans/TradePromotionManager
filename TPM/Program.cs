@@ -9,5 +9,9 @@ RuntimeHelpers.RunClassConstructor(typeof(LenDonHang.LenDonHangService).TypeHand
 
 RuntimeHelpers.RunClassConstructor(typeof(CacKhuyenMaiDangChay.ServiceCacKhuyenMaiDangChay).TypeHandle);
 RuntimeHelpers.RunClassConstructor(typeof(LenKeHoachKhuyenMai.ServiceLenKeHoachKhuyenMai).TypeHandle);
+RuntimeHelpers.RunClassConstructor(typeof(CacKhuyenMaiHoanThanh.ServiceCacKhuyenMaiHoanThanh).TypeHandle);
+RuntimeHelpers.RunClassConstructor(typeof(PhanTichKhuyenMai.ServicePhanTichKhuyenMai).TypeHandle);
 
 LenKeHoachKhuyenMai.ServiceLenKeHoachKhuyenMai.PostToCacKhuyenMaiDangChayService();
+CacKhuyenMaiDangChay.ServiceCacKhuyenMaiDangChay.PostToCacKhuyenMaiDangChayService();
+PhanTichKhuyenMai.ServicePhanTichKhuyenMai.GetCacKhuyenMaiHoanThanh();

@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MessageBus;
+using PhanTichKhuyenMai.Models;
 
 namespace PhanTichKhuyenMai
 {
     public static class ServicePhanTichKhuyenMai
     {
         public static string Name { get; set; } = "Phan Tich Khuyen Mai";
+        static KhuyenMai km = new KhuyenMai();
 
         static ServicePhanTichKhuyenMai()
         {
@@ -35,10 +37,13 @@ namespace PhanTichKhuyenMai
             if (msg == null || msg.Receiver != MessageBus.MessageBus.PhanTichKhuyenMaiService)
                 return;
 
-            PostToConsole($"Received Message: {json}");
-
             switch (msg.FunctionCall)
             {
+                case "GET REP":
+                    PostToConsole("Received Message GET REP");
+                    km = new KhuyenMai(msg.JsonParam);
+                    Console.WriteLine(msg.JsonParam);
+                    break;
                 default:
                     break;
             }
@@ -52,6 +57,11 @@ namespace PhanTichKhuyenMai
                 return;
 
             Console.WriteLine(message);
+        }
+
+        public static void GetCacKhuyenMaiHoanThanh()
+        {
+            Send(MessageBus.MessageBus.CacKhuyenMaiHoanThanhService, MessageBus.MessageBus.Get, "");
         }
     }
 }

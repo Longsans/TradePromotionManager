@@ -58,5 +58,13 @@ namespace CacKhuyenMaiDangChay
 
             Console.WriteLine(message);
         }
+
+        public static void PostToCacKhuyenMaiDangChayService()
+        {
+            km.soLuongHoaDon = 100;
+            km.tongThanhTien = 100000;
+            km.laiSuat = (long)(km.tongThanhTien - km.von);
+            Send(MessageBus.MessageBus.CacKhuyenMaiHoanThanhService, MessageBus.MessageBus.Post, km.toJson());
+        }
     }
 }
