@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LenDonHang.Models
 {
-    internal abstract class BaseCustomSerializable
+    public abstract class BaseCustomSerializable
     {
         public BaseCustomSerializable() { }
         public BaseCustomSerializable(string json) { }

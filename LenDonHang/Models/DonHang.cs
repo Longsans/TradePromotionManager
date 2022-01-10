@@ -4,12 +4,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace LenDonHang.Models
 {
-    internal class DonHang : BaseCustomSerializable
+    public class DonHang : BaseCustomSerializable
     {
         public KhachHang khachHang { get; set; }
         public List<ItemGioHang> gioHang { get; set; }
@@ -64,6 +65,30 @@ namespace LenDonHang.Models
             };
 
             return json.ToString(Formatting.Indented);
+        }
+
+        public string SerializeXml()
+        {
+            using (var stringWriter = new StringWriter())
+            {
+                var serializer = new XmlSerializer(this.GetType());
+                serializer.Serialize(stringWriter, this);
+                return stringWriter.ToString();
+            }
+        }
+
+        public static DonHang? DeserializeXml(string xml)
+        {
+            using (var stringReader = new StringReader(xml))
+            {
+                var serializer = new XmlSerializer(typeof(DonHang));
+                return serializer.Deserialize(stringReader) as DonHang;
+            }
+        }
+
+        public void WriteTo(string path)
+        {
+            File.WriteAllText(path, SerializeXml());
         }
 
         public ulong CalcTongTien()
