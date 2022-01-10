@@ -8,34 +8,18 @@ using LenKeHoachKhuyenMai.Models;
 
 namespace LenKeHoachKhuyenMai
 {
-    public class ServiceLenKeHoachKhuyenMai
+    public static class ServiceLenKeHoachKhuyenMai
     {
         public static string Name { get; set; } = "Len Ke Hoach Khuyen Mai";
-        KhuyenMai km = new KhuyenMai("{\"thoiGianBatDau\":\"12/12/2021\",\"thoiGianKetThuc\":\"2/2/2022\",\"soLuongMucTieu\":200,\"von\":10000,\"laiSuatMucTieu\":50000}");
+        static KhuyenMai km = new KhuyenMai("{\"thoiGianBatDau\":\"12/12/2021\",\"thoiGianKetThuc\":\"2/2/2022\",\"soLuongMucTieu\":200,\"von\":10000,\"laiSuatMucTieu\":50000}");
 
-        static private ServiceLenKeHoachKhuyenMai? _instance = null;
-        static public ServiceLenKeHoachKhuyenMai Instance
-        {
-            get
-            {
-                if (_instance == null)
-                    _instance = new ServiceLenKeHoachKhuyenMai();
-                return _instance;
-            }
-            private set
-            {
-                _instance = value;
-            }
-        }
-
-        public void Init()
+        static ServiceLenKeHoachKhuyenMai()
         {
             PostToConsole("Init");
-            Instance = new ServiceLenKeHoachKhuyenMai();
             MessageBus.MessageBus.MessageSent += Receive;
         }
 
-        public void Send(string receiver, string func, string json)
+        public static void Send(string receiver, string func, string json)
         {
             PostToConsole("");
             Message message = new Message();
@@ -46,7 +30,7 @@ namespace LenKeHoachKhuyenMai
             MessageBus.MessageBus.SendMessage(message);
         }
 
-        public void Receive(string json)
+        public static void Receive(string json)
         {
             var msg = Message.Decode(json);
 
@@ -62,12 +46,17 @@ namespace LenKeHoachKhuyenMai
             }
         }
 
-        public void PostToConsole(string message)
+        public static void PostToConsole(string message)
         {
-            Console.WriteLine($"[{Name}]: {message}");
+            Console.WriteLine($"[{Name}]:");
+
+            if (string.IsNullOrEmpty(message))
+                return;
+
+            Console.WriteLine(message);
         }
 
-        public void PostToCacKhuyenMaiDangChayService()
+        public static void PostToCacKhuyenMaiDangChayService()
         {
             Send(MessageBus.MessageBus.CacKhuyenMaiDangChayService, MessageBus.MessageBus.Post, km.toJson());
         }

@@ -7,33 +7,17 @@ using MessageBus;
 
 namespace CacKhuyenMaiHoanThanh
 {
-    public class ServiceCacKhuyenMaiHoanThanh
+    public static class ServiceCacKhuyenMaiHoanThanh
     {
         public static string Name { get; set; } = "Cac Khuyen Mai Hoan Thanh";
 
-        static private ServiceCacKhuyenMaiHoanThanh? _instance = null;
-        static public ServiceCacKhuyenMaiHoanThanh Instance
-        {
-            get
-            {
-                if (_instance == null)
-                    _instance = new ServiceCacKhuyenMaiHoanThanh();
-                return _instance;
-            }
-            private set
-            {
-                _instance = value;
-            }
-        }
-
-        public void Init()
+        static ServiceCacKhuyenMaiHoanThanh()
         {
             PostToConsole("Init");
-            Instance = new ServiceCacKhuyenMaiHoanThanh();
             MessageBus.MessageBus.MessageSent += Receive;
         }
 
-        public void Send(string receiver, string func, string json)
+        public static void Send(string receiver, string func, string json)
         {
             PostToConsole("");
             Message message = new Message();
@@ -44,7 +28,7 @@ namespace CacKhuyenMaiHoanThanh
             MessageBus.MessageBus.SendMessage(message);
         }
 
-        public void Receive(string json)
+        public static void Receive(string json)
         {
             var msg = Message.Decode(json);
 
@@ -60,9 +44,14 @@ namespace CacKhuyenMaiHoanThanh
             }
         }
 
-        public void PostToConsole(string message)
+        public static void PostToConsole(string message)
         {
-            Console.WriteLine($"[{Name}]: {message}");
+            Console.WriteLine($"[{Name}]:");
+
+            if (string.IsNullOrEmpty(message))
+                return;
+
+            Console.WriteLine(message);
         }
     }
 }

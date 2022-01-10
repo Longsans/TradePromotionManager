@@ -7,33 +7,17 @@ using MessageBus;
 
 namespace PhanTichKhuyenMai
 {
-    public class ServicePhanTichKhuyenMai
+    public static class ServicePhanTichKhuyenMai
     {
         public static string Name { get; set; } = "Phan Tich Khuyen Mai";
 
-        static private ServicePhanTichKhuyenMai? _instance = null;
-        static public ServicePhanTichKhuyenMai Instance
-        {
-            get
-            {
-                if (_instance == null)
-                    _instance = new ServicePhanTichKhuyenMai();
-                return _instance;
-            }
-            private set
-            {
-                _instance = value;
-            }
-        }
-
-        public void Init()
+        static ServicePhanTichKhuyenMai()
         {
             PostToConsole("Init");
-            Instance = new ServicePhanTichKhuyenMai();
             MessageBus.MessageBus.MessageSent += Receive;
         }
 
-        public void Send(string receiver, string func, string json)
+        public static void Send(string receiver, string func, string json)
         {
             PostToConsole("");
             Message message = new Message();
@@ -44,7 +28,7 @@ namespace PhanTichKhuyenMai
             MessageBus.MessageBus.SendMessage(message);
         }
 
-        public void Receive(string json)
+        public static void Receive(string json)
         {
             var msg = Message.Decode(json);
 
@@ -60,9 +44,14 @@ namespace PhanTichKhuyenMai
             }
         }
 
-        public void PostToConsole(string message)
+        public static void PostToConsole(string message)
         {
-            Console.WriteLine($"[{Name}]: {message}");
+            Console.WriteLine($"[{Name}]:");
+
+            if (string.IsNullOrEmpty(message))
+                return;
+
+            Console.WriteLine(message);
         }
     }
 }

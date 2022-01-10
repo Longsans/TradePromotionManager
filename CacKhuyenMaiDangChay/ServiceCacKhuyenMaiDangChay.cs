@@ -8,34 +8,18 @@ using CacKhuyenMaiDangChay.Models;
 
 namespace CacKhuyenMaiDangChay
 {
-    public class ServiceCacKhuyenMaiDangChay
+    public static class ServiceCacKhuyenMaiDangChay
     {
         public static string Name { get; set; } = "Cac Khuyen Mai Dang Chay";
-        KhuyenMai km = new KhuyenMai();
+        static KhuyenMai km = new KhuyenMai();
 
-        static private ServiceCacKhuyenMaiDangChay? _instance = null;
-        static public ServiceCacKhuyenMaiDangChay Instance
-        {
-            get 
-            { 
-                if (_instance == null)
-                    _instance = new ServiceCacKhuyenMaiDangChay();
-                return _instance; 
-            }
-            private set
-            {
-                _instance = value;
-            }
-        }
-
-        public void Init()
+        static ServiceCacKhuyenMaiDangChay()
         {
             PostToConsole("Init");
-            Instance = new ServiceCacKhuyenMaiDangChay();
             MessageBus.MessageBus.MessageSent += Receive;
         }
 
-        public void Send(string receiver, string func, string json)
+        public static void Send(string receiver, string func, string json)
         {
             PostToConsole("");
             Message message = new Message();
@@ -46,7 +30,7 @@ namespace CacKhuyenMaiDangChay
             MessageBus.MessageBus.SendMessage(message);
         }
 
-        public void Receive(string json)
+        public static void Receive(string json)
         {
             var msg = Message.Decode(json);
 
@@ -65,9 +49,14 @@ namespace CacKhuyenMaiDangChay
             }
         }
 
-        public void PostToConsole(string message)
+        public static void PostToConsole(string message)
         {
-            Console.WriteLine($"[{Name}]: {message}");
+            Console.WriteLine($"[{Name}]:");
+
+            if (string.IsNullOrEmpty(message))
+                return;
+
+            Console.WriteLine(message);
         }
     }
 }
